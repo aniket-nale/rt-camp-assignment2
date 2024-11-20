@@ -11,6 +11,8 @@ import com.qa.constants.URLConstant;
 import com.qa.constants.UserInfo;
 import org.testng.annotations.*;
 
+import java.nio.file.Paths;
+
 public class TestNG
 {
     Playwright playwright;
@@ -24,7 +26,8 @@ public class TestNG
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
                 .setHeadless(false));
-        browserContext = browser.newContext();
+        browserContext = browser.newContext(new Browser.NewContextOptions()
+                .setRecordVideoDir(Paths.get("Test_video/")));
         page = browserContext.newPage();
 
         HomePage homepage = new HomePage(page);
