@@ -43,4 +43,17 @@ public class ProductPage extends BasePage
             System.err.println("Invalid option");
         }
     }
+    public void addToCart(String productnames)
+    {
+        assert page.locator(productnames).textContent().contains("Add to cart");
+
+        page.locator(productnames).click();
+        page.waitForTimeout(1000);
+    }
+    public void goToCart()
+    {
+        page.locator(Locator.CART_BUTTON).click();
+        page.waitForTimeout(1000);
+        assert page.getByText("Your Cart").isVisible();
+    }
 }
