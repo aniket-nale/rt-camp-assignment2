@@ -14,12 +14,20 @@ public class ProductPage extends BasePage
     {
         if (sortOrder.equalsIgnoreCase("Z to A"))
         {
+            assert page.locator(Locator.SORT_OPTION).textContent().contains("A to Z") ||
+                    page.locator(Locator.SORT_OPTION).textContent().contains("high to low") ||
+                    page.locator(Locator.SORT_OPTION).textContent().contains("low to high");
+
             page.locator(Locator.SORT_OPTION).selectOption("za");
             page.waitForTimeout(2000);
 
             assert page.locator(Locator.SORT_OPTION).textContent().contains("Z to A");
         } else if (sortOrder.equalsIgnoreCase("high to Low"))
         {
+            assert page.locator(Locator.SORT_OPTION).textContent().contains("low to high") ||
+                    page.locator(Locator.SORT_OPTION).textContent().contains("A to Z")||
+                    page.locator(Locator.SORT_OPTION).textContent().contains("Z to A");
+
             page.locator(Locator.SORT_OPTION).selectOption("hilo");
             page.waitForTimeout(2000);
 
@@ -27,6 +35,10 @@ public class ProductPage extends BasePage
 
         }else if (sortOrder.equalsIgnoreCase("A to Z"))
         {
+            assert page.locator(Locator.SORT_OPTION).textContent().contains("Z to A") ||
+                    page.locator(Locator.SORT_OPTION).textContent().contains("high to low") ||
+                    page.locator(Locator.SORT_OPTION).textContent().contains("low to high");
+
             page.locator(Locator.SORT_OPTION).selectOption("az");
             page.waitForTimeout(1000);
 
@@ -34,6 +46,10 @@ public class ProductPage extends BasePage
 
         } else if (sortOrder.equalsIgnoreCase("low to high"))
         {
+            assert page.locator(Locator.SORT_OPTION).textContent().contains("high to low") ||
+                    page.locator(Locator.SORT_OPTION).textContent().contains("A to Z") ||
+                    page.locator(Locator.SORT_OPTION).textContent().contains("Z to A");
+
             page.locator(Locator.SORT_OPTION).selectOption("lohi");
             page.waitForTimeout(1000);
 
